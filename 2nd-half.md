@@ -134,3 +134,8 @@ AWSマネージメントコンソールで画面右上のリージョンが **�
 
 see: [index.html](/index.html)
 
+* `<APIのURL>` をAPI Gatewayで作成したAPIのURLに置き換える.
+* index.html をブラウザで開くとS3バケットの中身が一覧表示され、リンクを開くと新しいウィンドウで表示される.
+
+
+

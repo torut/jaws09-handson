@@ -1,0 +1,28 @@
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+  <script>
+	$(function() {
+		$.getJSON('<APIのURL>', function(json) {
+			var source   = document.getElementById("object-template").innerHTML;
+			var template = Handlebars.compile(source);
+			var html    = template(json);
+			$('body').html(html);
+		});
+	});
+  </script>
+
+  <script id="object-template" type="text/x-handlebars-template">
+    <ul>
+      {{#each this}}
+      <li>
+        <a href="{{url}}" target="_blank">{{filename}} ({{last_modified}} : {{mime_type}} : {{filesize}} bytes)</a>
+      </li>
+      {{/each}}
+    </ul>
+  </script>
+</head>
+<body>
+</body>
+</html>

@@ -47,7 +47,7 @@ AWSマネージメントコンソールで画面右上のリージョンが **�
 
 
 # S3へのアップロードのhtml, js
-see: (index.html)[index.html]
+see: [index.html]
 
 # S3へアップロードしたものの確認もAWSコンソールからS3をひらいて確認する
 

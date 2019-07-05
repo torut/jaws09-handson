@@ -1,0 +1,49 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.442.0.min.js"></script>
+</head>
+<body>
+<input type="file">
+<button id="upload">アップロード</button>
+
+<script>
+	var s3_client = function() {
+		AWS.config.region = "ap-northeast-1";
+		AWS.config.credentials = new AWS.CognitoIdentityCredentials({IdentityPoolId: "<IDプールID>"});
+		AWS.config.credentials.get(function(err) {
+			if (!err) {
+				console.log("Cognito Identify Id: " + AWS.config.credentials.identityId);
+			}
+		});
+		return new AWS.S3({params: {Bucket: "<S3バケット名>"}});
+	};
+
+$('button#upload').on('click', function() {
+	var file = $("input:file").prop("files")[0];
+	var promise = s3_client().putObject(
+		{Key: file.name, ContentType: file.type, Body: file, ACL: ""}
+	).promise();
+
+	promise
+		.then(
+			function(data){
+				if (data !== null) {
+					alert("アップロード成功!!");
+					return true;
+				} else {
+					alert("アップロード失敗しました。もう一度試してください。");
+					return false;
+				}
+			}
+		)
+		.catch(function(err) {
+			alert("アップロード失敗しました。もう一度試してください。");
+			console.log(err);
+			return false;
+		})
+		;
+});
+</script>
+</body>
+</html>

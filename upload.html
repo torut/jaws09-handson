@@ -7,6 +7,8 @@
 <input type="file">
 <button id="upload">アップロード</button>
 
+<div id="nowupload" style="display: none;">アップロード中</div>
+
 <script>
 	var s3_client = function() {
 		AWS.config.region = "ap-northeast-1";
@@ -20,6 +22,7 @@
 	};
 
 $('button#upload').on('click', function() {
+    $("div#nowupload").show();
 	var file = $("input:file").prop("files")[0];
 	var promise = s3_client().putObject(
 		{Key: file.name, ContentType: file.type, Body: file, ACL: ""}
@@ -30,15 +33,18 @@ $('button#upload').on('click', function() {
 			function(data){
 				if (data !== null) {
 					alert("アップロード成功!!");
+					$("div#nowupload").hide();
 					return true;
 				} else {
 					alert("アップロード失敗しました。もう一度試してください。");
+					$("div#nowupload").hide();
 					return false;
 				}
 			}
 		)
 		.catch(function(err) {
 			alert("アップロード失敗しました。もう一度試してください。");
+			$("div#nowupload").hide();
 			console.log(err);
 			return false;
 		})

@@ -26,6 +26,23 @@ AWSマネージメントコンソールで画面右上のリージョンが **�
    ![](/img/1st-05.png)
 4. 確認画面はバケット名とリージョンを再確認し、バケット名はコピペしておく
    ![](/img/1st-06.png)
+5. 作成したバケットを開く
+   ![](/img/1st-16.png)
+6. 「アクセス権限」のタブを開き「CORSの設定」をクリックする
+   ![](/img/1st-17.png)
+7. 「CORS構成エディター」に以下の内容をコピペして保存する
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>PUT</AllowedMethod>
+        <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+</CORSConfiguration>
+```
+
+
 
 # CognitoのIDプール
 1. AWSマネージメントコンソールの **AWSのサービス** のところで「cognito」と入力して表示されるリストの1番目を選択する
@@ -64,6 +81,9 @@ AWSマネージメントコンソールで画面右上のリージョンが **�
 # S3へのアップロードのhtml, js
 see: [upload.html](/upload.html)
 
+* `<IDプールID>` をCongnitoの **AWS認証情報欄の取得** でコピペした中の `IdentityPoolId` の値(`ap-northeast-1` から始まるもの) に置き換える.
+* `<S3バケット名>` をS3で作成したバケット名に置き換える.
+* upload.html をブラウザで開いてファイルを選択したあと「アップロード」ボタンを押すとS3にアップロードされる.
 
 # S3へアップロードしたものの確認もAWSコンソールからS3をひらいて確認する
 

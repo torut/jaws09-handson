@@ -1,7 +1,7 @@
 # JAWS-UG Shimane vol.9 =ハンズオン= 資料
 
 
-## 前半: (/1st-half.md)
+## 前半: [1st-half.md](/1st-half.md)
 
 AWS SDK JSを使ってブラウザから簡単にS3へファイルアップロードする.
 アクセスキー、シークレットキーは使わず Congnito のIDプールを使ってみる.
@@ -10,7 +10,7 @@ AWS SDK JSを使ってブラウザから簡単にS3へファイルアップロ�
 - IAM
 
 
-## 後半: (/2nd-half.md)
+## 後半: [2nd-half.md](/2nd-half.md)
 
 S3にアップロードしたファイルをサーバレスでブラウザから確認できるようにする.
 - IAM
@@ -19,6 +19,6 @@ S3にアップロードしたファイルをサーバレスでブラウザから
 - API Gateway
 
 
-## あとかたづけ: (/loss-time.md)
+## あとかたづけ: [loss-time.md](/loss-time.md)
 
 ハンズオンで作成したリソースの削除.

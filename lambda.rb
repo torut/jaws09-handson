@@ -5,8 +5,6 @@ def lambda_handler(event:, context:)
 
   objects = Aws::S3::Resource.new(
     :region => ENV['REGION'],
-    :access_key_id => ENV['ACCESS_KEY'],
-    :secret_access_key => ENV['SECRET_ACCESS_KEY'],
   ).bucket(ENV['BUCKET_NAME']).objects
 
   response = []
